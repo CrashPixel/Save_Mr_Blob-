@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://hg3h8if2qyeg"]
+
+[ext_resource type="Texture2D" uid="uid://5pjcrmtqpqvt" path="res://Assets/Images/Overlay.png" id="1_w2hc4"]
+[ext_resource type="Script" uid="uid://dww2848ehq2gd" path="res://Levels/blaster.gd" id="2_3cv0x"]
+[ext_resource type="Texture2D" uid="uid://deecwggviuko1" path="res://Assets/Images/Beam.png" id="3_ijvlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_w2hc4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3cv0x"]
+resource_name = "beam"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijvlf"]
+_data = {
+&"RESET": SubResource("Animation_w2hc4"),
+&"beam": SubResource("Animation_3cv0x")
+}
+
+[node name="Blaster" type="Sprite2D" unique_id=1212443482]
+texture = ExtResource("1_w2hc4")
+region_enabled = true
+region_rect = Rect2(60, 21, 2, 4)
+script = ExtResource("2_3cv0x")
+
+[node name="Beam" type="Sprite2D" parent="." unique_id=645709343]
+position = Vector2(-2, 0)
+texture = ExtResource("3_ijvlf")
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 4)
+
+[node name="DangerArea" type="Area2D" parent="Beam" unique_id=40969503]
+
+[node name="HitBox" type="CollisionShape2D" parent="Beam/DangerArea" unique_id=247928479]
+shape = SubResource("RectangleShape2D_0urlm")
+debug_color = Color(0.9932824, 0, 0.24663815, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1485704486]
+visible = false
+target_position = Vector2(-64, 0)
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=652047734]
+libraries/ = SubResource("AnimationLibrary_ijvlf")
+autoplay = &"beam"

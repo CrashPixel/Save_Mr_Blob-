@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ho4nb1lce7y" path="res://Assets/Images/Spring Sheet.png" id="5_77x7w"]
 [ext_resource type="Texture2D" uid="uid://36chwrq7p1vk" path="res://Assets/Images/Door.png" id="6_0urlm"]
 [ext_resource type="Texture2D" uid="uid://c4ha6y6ojvynj" path="res://Assets/Images/Mr Blob Spritesheet.png" id="7_77x7w"]
-[ext_resource type="Texture2D" uid="uid://deecwggviuko1" path="res://Assets/Images/Beam.png" id="7_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://hg3h8if2qyeg" path="res://Objects/blaster.tscn" id="7_xoyoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_syshm")
@@ -400,6 +400,15 @@ sources/0 = SubResource("TileSetAtlasSource_hn12h")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
 size = Vector2(2, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pg2"]
+size = Vector2(2, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77x7w"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xoyoh"]
+size = Vector2(2, 2)
+
 [node name="Level_1" type="Node2D" unique_id=1454198677]
 
 [node name="Backing" type="Sprite2D" parent="." unique_id=338671683]
@@ -467,23 +476,43 @@ region_rect = Rect2(0, 0, 2, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody2D" unique_id=223816642]
 shape = SubResource("RectangleShape2D_bihxj")
 
-[node name="Blaster" type="Sprite2D" parent="." unique_id=1552897523]
-position = Vector2(15, -26)
-texture = ExtResource("4_0urlm")
+[node name="BigDoor" type="Sprite2D" parent="." unique_id=276744505]
+texture_repeat = 2
+position = Vector2(7, -4)
+texture = ExtResource("6_0urlm")
+flip_h = true
 region_enabled = true
-region_rect = Rect2(60, 21, 2, 4)
+region_rect = Rect2(0, 0, 2, 16)
 
-[node name="Beam" type="Sprite2D" parent="Blaster" unique_id=1285169238]
-position = Vector2(-2, 0)
-texture = ExtResource("7_xoyoh")
-region_enabled = true
-region_rect = Rect2(0, 0, 2, 2)
+[node name="StaticBody2D" type="StaticBody2D" parent="BigDoor" unique_id=262555890]
 
-[node name="RayCast2D" type="RayCast2D" parent="Blaster" unique_id=236085795]
-target_position = Vector2(-38, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigDoor/StaticBody2D" unique_id=2140163937]
+shape = SubResource("RectangleShape2D_f4pg2")
 
 [node name="MrBlobSpritesheet" type="Sprite2D" parent="." unique_id=169902699]
 position = Vector2(-16, -22)
 texture = ExtResource("7_77x7w")
 hframes = 4
 vframes = 2
+
+[node name="Blasters" type="Node" parent="." unique_id=34419026]
+
+[node name="Blaster" parent="Blasters" unique_id=1212443482 instance=ExtResource("7_xoyoh")]
+position = Vector2(15, -26)
+
+[node name="Blaster2" parent="Blasters" unique_id=2136068273 instance=ExtResource("7_xoyoh")]
+position = Vector2(-3, -8)
+rotation = 3.1415927
+
+[node name="HitBox" parent="Blasters/Blaster2/Beam/DangerArea" parent_id_path=PackedInt32Array(2136068273, 40969503) index="0" unique_id=247928479]
+shape = SubResource("RectangleShape2D_77x7w")
+
+[node name="Blaster3" parent="Blasters" unique_id=1538330597 instance=ExtResource("7_xoyoh")]
+position = Vector2(-3, 0)
+rotation = 3.1415927
+
+[node name="HitBox" parent="Blasters/Blaster3/Beam/DangerArea" parent_id_path=PackedInt32Array(1538330597, 40969503) index="0" unique_id=247928479]
+shape = SubResource("RectangleShape2D_xoyoh")
+
+[editable path="Blasters/Blaster2"]
+[editable path="Blasters/Blaster3"]
