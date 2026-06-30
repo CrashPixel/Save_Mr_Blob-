@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm0hcrtu7dkx7"
+path="res://.godot/imported/MrBlob Dead.wav-e1bb398c0aaf975b065e3495d79150bd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MrBlob Dead.wav"
+dest_files=["res://.godot/imported/MrBlob Dead.wav-e1bb398c0aaf975b065e3495d79150bd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

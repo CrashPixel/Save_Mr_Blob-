@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4ha6y6ojvynj"
-path="res://.godot/imported/Mr Blob Spritesheet.png-18273bfcb336c6f43b35b678926381e2.ctex"
+path="res://.godot/imported/Mr Blob Spritesheet.png-31bbc722f27f5824c9b7538ce2487a5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mr Blob Spritesheet.png"
-dest_files=["res://.godot/imported/Mr Blob Spritesheet.png-18273bfcb336c6f43b35b678926381e2.ctex"]
+source_file="res://Assets/Images/Mr Blob Spritesheet.png"
+dest_files=["res://.godot/imported/Mr Blob Spritesheet.png-31bbc722f27f5824c9b7538ce2487a5f.ctex"]
 
 [params]
 

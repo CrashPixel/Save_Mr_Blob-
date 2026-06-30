@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsptbot3tfef1"
+path="res://.godot/imported/MrBlob Win.wav-555e4adc85104eda563d1f1b57707528.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MrBlob Win.wav"
+dest_files=["res://.godot/imported/MrBlob Win.wav-555e4adc85104eda563d1f1b57707528.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

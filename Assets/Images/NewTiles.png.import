@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iockndih1wlf"
-path="res://.godot/imported/Backing.png-c465363fbb6c1bb27a5f1168b53c510b.ctex"
+uid="uid://cx33sa1h547a5"
+path="res://.godot/imported/NewTiles.png-9b2d4587ae28a00ff4cc9fba9a5db11f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Backing.png"
-dest_files=["res://.godot/imported/Backing.png-c465363fbb6c1bb27a5f1168b53c510b.ctex"]
+source_file="res://Assets/Images/NewTiles.png"
+dest_files=["res://.godot/imported/NewTiles.png-9b2d4587ae28a00ff4cc9fba9a5db11f.ctex"]
 
 [params]
 
