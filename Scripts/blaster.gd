@@ -7,6 +7,6 @@ extends Sprite2D
 func _process(delta: float) -> void:
 	var contact = ray_cast.get_collision_point()
 	#print(contact)
-	beam.position.x = -(self.position.distance_to(contact) / 2)
+	beam.position.x = -ceili(self.position.distance_to(contact) / 2)
 	beam.set_region_rect(Rect2(0, 0, (-beam.position.x*2), 4))
 	hit_box.shape.set_size(Vector2(abs(beam.position.x*2), 2))

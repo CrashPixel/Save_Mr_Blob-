@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cu7wnqu5hdaqd"]
+
+[ext_resource type="Texture2D" uid="uid://36chwrq7p1vk" path="res://Assets/Images/Door.png" id="1_mkrpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pg2"]
+size = Vector2(2, 16)
+
+[node name="BigDoor" type="Sprite2D" unique_id=991061451]
+texture_repeat = 2
+texture = ExtResource("1_mkrpt")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=917111093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=503375726]
+shape = SubResource("RectangleShape2D_f4pg2")

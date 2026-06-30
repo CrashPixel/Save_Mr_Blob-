@@ -4,10 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cx33sa1h547a5" path="res://Assets/Images/NewTiles.png" id="2_syshm"]
 [ext_resource type="AudioStream" uid="uid://c4evay14n8fi8" path="res://Assets/Audio/MrBlob Song.wav" id="3_rfktq"]
 [ext_resource type="Texture2D" uid="uid://5pjcrmtqpqvt" path="res://Assets/Images/Overlay.png" id="4_0urlm"]
+[ext_resource type="Script" uid="uid://yiht4qx60ji6" path="res://Scripts/panel_control.gd" id="4_f4pg2"]
 [ext_resource type="Texture2D" uid="uid://d0ho4nb1lce7y" path="res://Assets/Images/Spring Sheet.png" id="5_77x7w"]
-[ext_resource type="Texture2D" uid="uid://36chwrq7p1vk" path="res://Assets/Images/Door.png" id="6_0urlm"]
+[ext_resource type="PackedScene" uid="uid://c5bndtaikyqhj" path="res://Objects/door.tscn" id="6_xoyoh"]
 [ext_resource type="Texture2D" uid="uid://c4ha6y6ojvynj" path="res://Assets/Images/Mr Blob Spritesheet.png" id="7_77x7w"]
+[ext_resource type="PackedScene" uid="uid://cu7wnqu5hdaqd" path="res://Objects/big_door.tscn" id="7_f4pg2"]
 [ext_resource type="PackedScene" uid="uid://hg3h8if2qyeg" path="res://Objects/blaster.tscn" id="7_xoyoh"]
+[ext_resource type="Texture2D" uid="uid://5lvqb3i2qtg0" path="res://Assets/Images/Save Mr Blob Screens.png" id="11_62b6n"]
+[ext_resource type="Script" uid="uid://bv42regphj53q" path="res://Levels/mr_blob.gd" id="11_rs4xw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_syshm")
@@ -397,17 +401,14 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.2627451, 0, 0.23921569, 1)
 sources/0 = SubResource("TileSetAtlasSource_hn12h")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
-size = Vector2(2, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4pg2"]
-size = Vector2(2, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77x7w"]
 size = Vector2(2, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xoyoh"]
 size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
+size = Vector2(4, 4)
 
 [node name="Level_1" type="Node2D" unique_id=1454198677]
 
@@ -418,6 +419,7 @@ texture = ExtResource("1_rf6l5")
 [node name="TheCamera" type="Camera2D" parent="." unique_id=1937560161]
 position = Vector2(0, -6)
 zoom = Vector2(8, 8)
+process_callback = 0
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1303037322]
 tile_map_data = PackedByteArray("AAAFAPT/AAACAAAAAAAEAPT/AAABAAAAAAADAPT/AAABAAAAAAACAPT/AAABAAAAAAABAPT/AAABAAAAAAAAAPT/AAABAAAAAAD///T/AAABAAAAAAD+//T/AAABAAAAAAD9//T/AAAGAAAAAAD8//T/AAABAAMAAAD7//T/AAABAAMAAAD6//T/AAAEAAAAAAAFAAgAAAACAAIAAAAFAAcAAAACAAEAAAAFAAYAAAACAAEAAAAFAAUAAAACAAEAAAAFAAQAAAACAAEAAAAFAAMAAAACAAEAAAAFAAIAAAACAAEAAAAFAAEAAAACAAEAAAAFAAAAAAACAAEAAAAFAP//AAACAAEAAAAFAP7/AAACAAEAAAAFAP3/AAACAAEAAAAFAPz/AAACAAEAAAAFAPv/AAACAAEAAAAFAPr/AAACAAEAAAAFAPn/AAACAAEAAAAFAPj/AAACAAEAAAAFAPf/AAACAAEAAAAFAPb/AAACAAEAAAAFAPX/AAACAAEAAAAEAAgAAAABAAIAAAADAAgAAAABAAIAAAACAAgAAAABAAIAAAABAAgAAAABAAIAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAABAAIAAAD9/wgAAAABAAIAAAD8/wgAAAABAAIAAAD7/wgAAAABAAIAAAD6/wgAAAAAAAIAAAD6/wcAAAAAAAEAAAD6/wYAAAAAAAEAAAD6/wUAAAAAAAEAAAD6/wQAAAAAAAEAAAD6/wMAAAAEAAIAAAD6/wIAAAADAAEAAAD6/wEAAAADAAEAAAD6/wAAAAADAAEAAAD6////AAADAAEAAAD6//7/AAADAAEAAAD6//3/AAADAAEAAAD6//z/AAAEAAEAAAD6//v/AAAEAAIAAAD6//r/AAADAAEAAAD6//n/AAADAAEAAAD6//j/AAADAAEAAAD6//f/AAADAAEAAAD6//b/AAADAAEAAAD6//X/AAADAAEAAAAEAAcAAAABAAEAAAAEAAYAAAABAAEAAAAEAAUAAAAGAAIAAAADAAcAAAABAAEAAAADAAYAAAABAAEAAAADAAUAAAABAAAAAAACAAcAAAABAAEAAAACAAYAAAABAAEAAAACAAUAAAABAAAAAAABAAcAAAABAAEAAAABAAYAAAABAAEAAAABAAUAAAABAAAAAAAAAAcAAAABAAEAAAAAAAYAAAABAAEAAAAAAAUAAAABAAAAAAD//wcAAAABAAEAAAD//wYAAAABAAEAAAD//wUAAAAFAAIAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD9/wcAAAABAAEAAAD9/wYAAAABAAEAAAD9/wUAAAABAAEAAAD8/wcAAAABAAEAAAD8/wYAAAABAAEAAAD8/wUAAAABAAEAAAD7/wcAAAABAAEAAAD7/wYAAAABAAEAAAD7/wUAAAABAAEAAAD//wQAAAACAAEAAAD//wMAAAACAAAAAAD+/wQAAAABAAEAAAD+/wMAAAABAAAAAAD9/wQAAAABAAEAAAD9/wMAAAABAAAAAAD8/wQAAAABAAEAAAD8/wMAAAABAAAAAAD7/wQAAAABAAEAAAD7/wMAAAABAAAAAAAEAAQAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAP//AAAAAAEAAAAEAP7/AAAAAAEAAAAEAP3/AAAAAAEAAAAEAPz/AAAAAAEAAAAEAPv/AAAAAAEAAAAEAPr/AAAAAAEAAAAEAPn/AAAAAAEAAAAEAPj/AAAGAAEAAAAEAPf/AAABAAEAAAAEAPb/AAABAAEAAAAEAPX/AAABAAEAAAADAPX/AAABAAEAAAACAPX/AAABAAEAAAABAPX/AAABAAEAAAAAAPX/AAABAAEAAAD///X/AAABAAEAAAD+//X/AAABAAEAAAD9//X/AAAAAAEAAAADAPb/AAABAAEAAAACAPb/AAABAAEAAAABAPb/AAABAAEAAAAAAPb/AAABAAEAAAD///b/AAAGAAEAAAD+//b/AAABAAIAAAD9//b/AAAAAAIAAAADAPj/AAABAAIAAAADAPf/AAABAAEAAAACAPj/AAABAAIAAAACAPf/AAABAAEAAAABAPj/AAABAAIAAAABAPf/AAABAAEAAAAAAPj/AAABAAIAAAAAAPf/AAABAAEAAAD///j/AAAAAAIAAAD///f/AAAAAAEAAAD+/wAAAAADAAIAAAD+////AAADAAEAAAD+//7/AAADAAEAAAD+//3/AAADAAEAAAD+//z/AAAIAAEAAAD9//z/AAABAAIAAAD8//z/AAABAAIAAAD7//z/AAABAAIAAAABAPz/AAACAAIAAAABAPv/AAACAAAAAAAAAPz/AAABAAIAAAAAAPv/AAABAAAAAAD///z/AAABAAIAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD9//v/AAABAAAAAAD8//v/AAABAAAAAAD7//v/AAABAAAAAAA=")
@@ -425,9 +427,45 @@ tile_set = SubResource("TileSet_bihxj")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1164707635]
 stream = ExtResource("3_rfktq")
-autoplay = true
 
-[node name="UI" type="Node2D" parent="." unique_id=1777463172]
+[node name="Doors" type="Node2D" parent="." unique_id=531852259]
+
+[node name="Door" parent="Doors" unique_id=38096025 instance=ExtResource("6_xoyoh")]
+position = Vector2(-3, -24)
+
+[node name="Door2" parent="Doors" unique_id=1987271269 instance=ExtResource("6_xoyoh")]
+position = Vector2(-16, -37)
+rotation = -1.5707964
+
+[node name="BigDoor" parent="Doors" unique_id=991061451 instance=ExtResource("7_f4pg2")]
+position = Vector2(7, -4)
+
+[node name="BigDoor2" parent="Doors" unique_id=1681256842 instance=ExtResource("7_f4pg2")]
+position = Vector2(8, 13)
+rotation = 1.5707964
+
+[node name="Blasters" type="Node2D" parent="." unique_id=1798548711]
+
+[node name="Blaster" parent="Blasters" unique_id=1212443482 instance=ExtResource("7_xoyoh")]
+position = Vector2(15, -26)
+
+[node name="Blaster2" parent="Blasters" unique_id=2136068273 instance=ExtResource("7_xoyoh")]
+position = Vector2(-3, -8)
+rotation = -3.1415925
+
+[node name="HitBox" parent="Blasters/Blaster2/Beam/DangerArea" parent_id_path=PackedInt32Array(2136068273, 40969503) index="0" unique_id=247928479]
+shape = SubResource("RectangleShape2D_77x7w")
+
+[node name="Blaster3" parent="Blasters" unique_id=1538330597 instance=ExtResource("7_xoyoh")]
+position = Vector2(-3, 0)
+rotation = -3.1415925
+
+[node name="HitBox" parent="Blasters/Blaster3/Beam/DangerArea" parent_id_path=PackedInt32Array(1538330597, 40969503) index="0" unique_id=247928479]
+shape = SubResource("RectangleShape2D_xoyoh")
+
+[node name="UI" type="Node2D" parent="." unique_id=1777463172 node_paths=PackedStringArray("doors")]
+script = ExtResource("4_f4pg2")
+doors = NodePath("../Doors")
 
 [node name="ControlPanel" type="Sprite2D" parent="UI" unique_id=1017096278]
 position = Vector2(0, 28)
@@ -453,66 +491,57 @@ texture = ExtResource("4_0urlm")
 region_enabled = true
 region_rect = Rect2(41, 3, 6, 10)
 
+[node name="RestartScreen" type="Sprite2D" parent="UI" unique_id=2134031796]
+visible = false
+z_index = 5
+position = Vector2(0, -6)
+texture = ExtResource("11_62b6n")
+region_enabled = true
+region_rect = Rect2(128, 96, 48, 84)
+
+[node name="DeathScreen" type="Sprite2D" parent="UI" unique_id=640905485]
+visible = false
+z_index = 5
+position = Vector2(0, -6)
+texture = ExtResource("11_62b6n")
+region_enabled = true
+region_rect = Rect2(0, 96, 48, 84)
+
+[node name="UIAnimations" type="AnimationPlayer" parent="UI" unique_id=645609075]
+
 [node name="ExitStar" type="Sprite2D" parent="." unique_id=2000023689]
 position = Vector2(-14, -6)
 texture = ExtResource("4_0urlm")
 region_enabled = true
 region_rect = Rect2(52, 21, 6, 6)
 
-[node name="ExitStar2" type="Sprite2D" parent="." unique_id=1070977851]
+[node name="Win" type="Sprite2D" parent="ExitStar" unique_id=1794611632]
+visible = false
+position = Vector2(13, -2)
+texture = ExtResource("4_0urlm")
+region_enabled = true
+region_rect = Rect2(66, 17, 28, 14)
+
+[node name="Spring" type="Sprite2D" parent="." unique_id=1070977851]
 position = Vector2(-14, 10)
 texture = ExtResource("5_77x7w")
 hframes = 3
 
-[node name="Door" type="Sprite2D" parent="." unique_id=1249250331]
-texture_repeat = 2
-position = Vector2(-3, -24)
-texture = ExtResource("6_0urlm")
-region_enabled = true
-region_rect = Rect2(0, 0, 2, 8)
+[node name="MrBlob" type="CharacterBody2D" parent="." unique_id=2121106440]
+position = Vector2(-17, -40)
+script = ExtResource("11_rs4xw")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Door" unique_id=597293913]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody2D" unique_id=223816642]
-shape = SubResource("RectangleShape2D_bihxj")
-
-[node name="BigDoor" type="Sprite2D" parent="." unique_id=276744505]
-texture_repeat = 2
-position = Vector2(7, -4)
-texture = ExtResource("6_0urlm")
-flip_h = true
-region_enabled = true
-region_rect = Rect2(0, 0, 2, 16)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="BigDoor" unique_id=262555890]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BigDoor/StaticBody2D" unique_id=2140163937]
-shape = SubResource("RectangleShape2D_f4pg2")
-
-[node name="MrBlobSpritesheet" type="Sprite2D" parent="." unique_id=169902699]
-position = Vector2(-16, -22)
+[node name="MrBlobSprites" type="Sprite2D" parent="MrBlob" unique_id=169902699]
 texture = ExtResource("7_77x7w")
 hframes = 4
 vframes = 2
 
-[node name="Blasters" type="Node" parent="." unique_id=34419026]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MrBlob" unique_id=1166437305]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bihxj")
 
-[node name="Blaster" parent="Blasters" unique_id=1212443482 instance=ExtResource("7_xoyoh")]
-position = Vector2(15, -26)
-
-[node name="Blaster2" parent="Blasters" unique_id=2136068273 instance=ExtResource("7_xoyoh")]
-position = Vector2(-3, -8)
-rotation = 3.1415927
-
-[node name="HitBox" parent="Blasters/Blaster2/Beam/DangerArea" parent_id_path=PackedInt32Array(2136068273, 40969503) index="0" unique_id=247928479]
-shape = SubResource("RectangleShape2D_77x7w")
-
-[node name="Blaster3" parent="Blasters" unique_id=1538330597 instance=ExtResource("7_xoyoh")]
-position = Vector2(-3, 0)
-rotation = 3.1415927
-
-[node name="HitBox" parent="Blasters/Blaster3/Beam/DangerArea" parent_id_path=PackedInt32Array(1538330597, 40969503) index="0" unique_id=247928479]
-shape = SubResource("RectangleShape2D_xoyoh")
+[node name="WallTimer" type="Timer" parent="MrBlob" unique_id=1563576393]
+wait_time = 0.1
 
 [editable path="Blasters/Blaster2"]
 [editable path="Blasters/Blaster3"]
