@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu1amwwd58jfe"
-path="res://.godot/imported/Level Assets.png-6593a9c954a6d59a146443a336bec600.ctex"
+uid="uid://d0ho4nb1lce7y"
+path="res://.godot/imported/Spring Sheet.png-956c10e24d28a2e817b0acf96873b7cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Level Assets.png"
-dest_files=["res://.godot/imported/Level Assets.png-6593a9c954a6d59a146443a336bec600.ctex"]
+source_file="res://Assets/Images/Spring Sheet.png"
+dest_files=["res://.godot/imported/Spring Sheet.png-956c10e24d28a2e817b0acf96873b7cf.ctex"]
 
 [params]
 
