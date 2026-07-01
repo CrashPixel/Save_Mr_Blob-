@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ckrih02dao2n8"]
+
+[ext_resource type="Texture2D" uid="uid://d0ho4nb1lce7y" path="res://Assets/Images/Spring Sheet.png" id="1_1spad"]
+[ext_resource type="Script" uid="uid://cnsfh2ot3qhur" path="res://Levels/spring.gd" id="2_mt4ba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hkqn"]
+atlas = ExtResource("1_1spad")
+region = Rect2(4, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34erp"]
+atlas = ExtResource("1_1spad")
+region = Rect2(8, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2bse"]
+atlas = ExtResource("1_1spad")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk57d"]
+atlas = ExtResource("1_1spad")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bihxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hkqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34erp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2bse")
+}],
+"loop": 0,
+"name": &"SpringBounce",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk57d")
+}],
+"loop": 1,
+"name": &"SpringIdle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
+size = Vector2(2, 4)
+
+[node name="Spring" type="AnimatedSprite2D" unique_id=1290467795]
+sprite_frames = SubResource("SpriteFrames_bihxj")
+animation = &"SpringIdle"
+script = ExtResource("2_mt4ba")
+
+[node name="SpringArea" type="Area2D" parent="." unique_id=570622001]
+
+[node name="SpringBox" type="CollisionShape2D" parent="SpringArea" unique_id=1468828967]
+shape = SubResource("RectangleShape2D_bihxj")
+debug_color = Color(0, 0.6469318, 0.23248035, 0.41960785)
+
+[connection signal="body_entered" from="SpringArea" to="." method="spring"]

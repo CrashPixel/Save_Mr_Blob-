@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cr0l4ciltk741"]
+
+[ext_resource type="Texture2D" uid="uid://sr1ypfegr601" path="res://Assets/Images/Spikes.png" id="1_qah28"]
+[ext_resource type="Script" uid="uid://cq88jklofro65" path="res://Scripts/hazards.gd" id="2_03g0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2bse"]
+size = Vector2(16, 2)
+
+[node name="LargeSpikes" type="Sprite2D" unique_id=2065447493]
+texture = ExtResource("1_qah28")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 4)
+script = ExtResource("2_03g0d")
+
+[node name="DangerArea" type="Area2D" parent="." unique_id=2128734181]
+
+[node name="HitBox" type="CollisionShape2D" parent="DangerArea" unique_id=1676449431]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_k2bse")
+debug_color = Color(0.9932824, 0, 0.24663815, 0.41960785)

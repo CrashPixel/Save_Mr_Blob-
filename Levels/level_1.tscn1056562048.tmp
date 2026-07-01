@@ -5,13 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://c4evay14n8fi8" path="res://Assets/Audio/MrBlob Song.wav" id="3_rfktq"]
 [ext_resource type="Texture2D" uid="uid://5pjcrmtqpqvt" path="res://Assets/Images/Overlay.png" id="4_0urlm"]
 [ext_resource type="Script" uid="uid://yiht4qx60ji6" path="res://Scripts/panel_control.gd" id="4_f4pg2"]
-[ext_resource type="PackedScene" uid="uid://c5bndtaikyqhj" path="res://Objects/Harmless/door.tscn" id="6_xoyoh"]
-[ext_resource type="PackedScene" uid="uid://cu7wnqu5hdaqd" path="res://Objects/Harmless/big_door.tscn" id="7_f4pg2"]
-[ext_resource type="PackedScene" uid="uid://hg3h8if2qyeg" path="res://Objects/Hazards/blaster.tscn" id="7_xoyoh"]
-[ext_resource type="PackedScene" uid="uid://ckrih02dao2n8" path="res://Objects/Harmless/spring.tscn" id="10_rs4xw"]
+[ext_resource type="Texture2D" uid="uid://d0ho4nb1lce7y" path="res://Assets/Images/Spring Sheet.png" id="5_77x7w"]
+[ext_resource type="PackedScene" uid="uid://c5bndtaikyqhj" path="res://Objects/door.tscn" id="6_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://cu7wnqu5hdaqd" path="res://Objects/big_door.tscn" id="7_f4pg2"]
+[ext_resource type="PackedScene" uid="uid://hg3h8if2qyeg" path="res://Objects/blaster.tscn" id="7_xoyoh"]
 [ext_resource type="Texture2D" uid="uid://5lvqb3i2qtg0" path="res://Assets/Images/Save Mr Blob Screens.png" id="11_62b6n"]
+[ext_resource type="Script" uid="uid://cnsfh2ot3qhur" path="res://Levels/spring.gd" id="11_lk57d"]
 [ext_resource type="PackedScene" uid="uid://bm65lxuti74co" path="res://Objects/mr_blob.tscn" id="11_rs4xw"]
-[ext_resource type="PackedScene" uid="uid://cr0l4ciltk741" path="res://Objects/Hazards/large_spikes.tscn" id="13_lk57d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_syshm")
@@ -407,6 +407,9 @@ size = Vector2(2, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xoyoh"]
 size = Vector2(2, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
+size = Vector2(4, 4)
+
 [node name="Level_1" type="Node2D" unique_id=1454198677]
 
 [node name="Backing" type="Sprite2D" parent="." unique_id=338671683]
@@ -434,10 +437,6 @@ position = Vector2(-3, -24)
 position = Vector2(-16, -37)
 rotation = -1.5707964
 
-[node name="Door3" parent="Doors" unique_id=538490011 instance=ExtResource("6_xoyoh")]
-position = Vector2(12, -19)
-rotation = -1.5707964
-
 [node name="BigDoor" parent="Doors" unique_id=991061451 instance=ExtResource("7_f4pg2")]
 position = Vector2(7, -4)
 
@@ -445,23 +444,23 @@ position = Vector2(7, -4)
 position = Vector2(8, 13)
 rotation = 1.5707964
 
-[node name="Hazards" type="Node2D" parent="." unique_id=1798548711]
+[node name="Blasters" type="Node2D" parent="." unique_id=1798548711]
 
-[node name="Blaster" parent="Hazards" unique_id=1212443482 instance=ExtResource("7_xoyoh")]
+[node name="Blaster" parent="Blasters" unique_id=1212443482 instance=ExtResource("7_xoyoh")]
 position = Vector2(15, -26)
 
-[node name="Blaster2" parent="Hazards" unique_id=2136068273 instance=ExtResource("7_xoyoh")]
+[node name="Blaster2" parent="Blasters" unique_id=2136068273 instance=ExtResource("7_xoyoh")]
 position = Vector2(-3, -8)
 rotation = -3.1415925
 
-[node name="HitBox" parent="Hazards/Blaster2/DangerArea" parent_id_path=PackedInt32Array(2136068273, 40969503) index="0" unique_id=247928479]
+[node name="HitBox" parent="Blasters/Blaster2/Beam/DangerArea" parent_id_path=PackedInt32Array(2136068273, 40969503) index="0" unique_id=247928479]
 shape = SubResource("RectangleShape2D_77x7w")
 
-[node name="Blaster3" parent="Hazards" unique_id=1538330597 instance=ExtResource("7_xoyoh")]
+[node name="Blaster3" parent="Blasters" unique_id=1538330597 instance=ExtResource("7_xoyoh")]
 position = Vector2(-3, 0)
 rotation = -3.1415925
 
-[node name="HitBox" parent="Hazards/Blaster3/DangerArea" parent_id_path=PackedInt32Array(1538330597, 40969503) index="0" unique_id=247928479]
+[node name="HitBox" parent="Blasters/Blaster3/Beam/DangerArea" parent_id_path=PackedInt32Array(1538330597, 40969503) index="0" unique_id=247928479]
 shape = SubResource("RectangleShape2D_xoyoh")
 
 [node name="UI" type="Node2D" parent="." unique_id=1777463172 node_paths=PackedStringArray("doors")]
@@ -523,14 +522,22 @@ texture = ExtResource("4_0urlm")
 region_enabled = true
 region_rect = Rect2(66, 17, 28, 14)
 
-[node name="Spring" parent="." unique_id=1290467795 instance=ExtResource("10_rs4xw")]
+[node name="Spring" type="Sprite2D" parent="." unique_id=1070977851]
 position = Vector2(-14, 10)
+texture = ExtResource("5_77x7w")
+hframes = 3
+script = ExtResource("11_lk57d")
+
+[node name="SpringArea" type="Area2D" parent="Spring" unique_id=943043319]
+
+[node name="SpringBox" type="CollisionShape2D" parent="Spring/SpringArea" unique_id=2044270578]
+shape = SubResource("RectangleShape2D_bihxj")
+debug_color = Color(0, 0.6469318, 0.23248035, 0.41960785)
 
 [node name="MrBlob" parent="." unique_id=1087119806 instance=ExtResource("11_rs4xw")]
 position = Vector2(-17, -40)
 
-[node name="LargeSpikes" parent="." unique_id=2065447493 instance=ExtResource("13_lk57d")]
-position = Vector2(8, 18)
+[connection signal="body_entered" from="Spring/SpringArea" to="Spring" method="spring"]
 
-[editable path="Hazards/Blaster2"]
-[editable path="Hazards/Blaster3"]
+[editable path="Blasters/Blaster2"]
+[editable path="Blasters/Blaster3"]

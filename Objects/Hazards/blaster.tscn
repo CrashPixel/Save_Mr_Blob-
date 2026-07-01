@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://dww2848ehq2gd" path="res://Scripts/blaster.gd" id="2_3cv0x"]
 [ext_resource type="Texture2D" uid="uid://deecwggviuko1" path="res://Assets/Images/Beam.png" id="3_ijvlf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
-size = Vector2(2, 2)
-
 [sub_resource type="Animation" id="Animation_w2hc4"]
 length = 0.001
 tracks/0/type = "value"
@@ -45,6 +42,9 @@ _data = {
 &"beam": SubResource("Animation_3cv0x")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
+size = Vector2(2, 2)
+
 [node name="Blaster" type="Sprite2D" unique_id=1212443482]
 texture = ExtResource("1_w2hc4")
 region_enabled = true
@@ -58,12 +58,6 @@ vframes = 2
 region_enabled = true
 region_rect = Rect2(0, 0, 2, 4)
 
-[node name="DangerArea" type="Area2D" parent="Beam" unique_id=40969503]
-
-[node name="HitBox" type="CollisionShape2D" parent="Beam/DangerArea" unique_id=247928479]
-shape = SubResource("RectangleShape2D_0urlm")
-debug_color = Color(0.9932824, 0, 0.24663815, 0.41960785)
-
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1485704486]
 visible = false
 target_position = Vector2(-64, 0)
@@ -71,3 +65,10 @@ target_position = Vector2(-64, 0)
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=652047734]
 libraries/ = SubResource("AnimationLibrary_ijvlf")
 autoplay = &"beam"
+
+[node name="DangerArea" type="Area2D" parent="." unique_id=40969503]
+position = Vector2(-2, 0)
+
+[node name="HitBox" type="CollisionShape2D" parent="DangerArea" unique_id=247928479]
+shape = SubResource("RectangleShape2D_0urlm")
+debug_color = Color(0.9932824, 0, 0.24663815, 0.41960785)
