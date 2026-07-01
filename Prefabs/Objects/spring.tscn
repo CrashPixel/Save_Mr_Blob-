@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckrih02dao2n8"]
 
 [ext_resource type="Texture2D" uid="uid://d0ho4nb1lce7y" path="res://Assets/Images/Spring Sheet.png" id="1_1spad"]
-[ext_resource type="Script" uid="uid://cnsfh2ot3qhur" path="res://Levels/spring.gd" id="2_mt4ba"]
+[ext_resource type="Script" uid="uid://cnsfh2ot3qhur" path="res://Scripts/spring.gd" id="2_mt4ba"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hkqn"]
 atlas = ExtResource("1_1spad")

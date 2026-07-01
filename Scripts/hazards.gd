@@ -1,6 +1,7 @@
 extends Sprite2D
 class_name Hazards
 
+@onready var ui: Node2D = get_node("/root/Level/UI")
 @onready var danger_area: Area2D = $DangerArea
 
 #Connecting the Signals
@@ -10,4 +11,4 @@ func _ready() -> void:
 #Hurting the Blob
 func blob_entered(body: Node2D):
 	if body is CharacterBody2D:
-		body.hurt_blob()
+		ui.hurt_blob()

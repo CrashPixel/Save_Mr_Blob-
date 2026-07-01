@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dtivm1sb0goal"]
+
+[ext_resource type="Texture2D" uid="uid://iockndih1wlf" path="res://Assets/Images/Backing.png" id="1_dxofi"]
+
+[node name="TheCamera" type="Camera2D" unique_id=733294610]
+zoom = Vector2(8, 8)
+
+[node name="Backing" type="Sprite2D" parent="." unique_id=1413282003]
+texture = ExtResource("1_dxofi")

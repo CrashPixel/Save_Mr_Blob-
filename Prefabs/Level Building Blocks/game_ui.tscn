@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dy7hyndy17ddi"]
+
+[ext_resource type="Script" uid="uid://yiht4qx60ji6" path="res://Scripts/panel_control.gd" id="1_4utcv"]
+[ext_resource type="Texture2D" uid="uid://5pjcrmtqpqvt" path="res://Assets/Images/Overlay.png" id="2_x2se0"]
+[ext_resource type="Texture2D" uid="uid://5lvqb3i2qtg0" path="res://Assets/Images/Save Mr Blob Screens.png" id="3_xd705"]
+
+[sub_resource type="Animation" id="Animation_lk57d"]
+resource_name = "DeathScreen"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathScreen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_2hkqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RestartScreen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathScreen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_34erp"]
+resource_name = "RestartScreen"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RestartScreen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2bse"]
+_data = {
+&"DeathScreen": SubResource("Animation_lk57d"),
+&"RESET": SubResource("Animation_2hkqn"),
+&"RestartScreen": SubResource("Animation_34erp")
+}
+
+[node name="UI" type="Node2D" unique_id=1899102928 node_paths=PackedStringArray("doors")]
+z_index = 3
+script = ExtResource("1_4utcv")
+doors = NodePath("")
+
+[node name="ControlPanel" type="Sprite2D" parent="." unique_id=159723839]
+position = Vector2(0, 28)
+texture = ExtResource("2_x2se0")
+region_enabled = true
+region_rect = Rect2(0, 16, 48, 16)
+
+[node name="Restart" type="Sprite2D" parent="." unique_id=859202456]
+position = Vector2(-19, 28)
+texture = ExtResource("2_x2se0")
+region_enabled = true
+region_rect = Rect2(1, 3, 6, 10)
+
+[node name="OnOff" type="Sprite2D" parent="." unique_id=1213592473]
+position = Vector2(0, 28)
+texture = ExtResource("2_x2se0")
+region_enabled = true
+region_rect = Rect2(9, 3, 30, 10)
+
+[node name="SpeedUp" type="Sprite2D" parent="." unique_id=685535607]
+position = Vector2(19, 28)
+texture = ExtResource("2_x2se0")
+region_enabled = true
+region_rect = Rect2(41, 3, 6, 10)
+
+[node name="RestartScreen" type="Sprite2D" parent="." unique_id=1880170006]
+visible = false
+z_index = 5
+position = Vector2(0, -6)
+texture = ExtResource("3_xd705")
+hframes = 4
+vframes = 2
+frame = 6
+region_rect = Rect2(192, 96, 48, 84)
+
+[node name="DeathScreen" type="Sprite2D" parent="." unique_id=197614925]
+visible = false
+z_index = 5
+position = Vector2(0, -6)
+texture = ExtResource("3_xd705")
+hframes = 4
+vframes = 2
+frame = 4
+region_rect = Rect2(64, 96, 48, 84)
+
+[node name="UIAnimations" type="AnimationPlayer" parent="." unique_id=338586956]
+libraries/ = SubResource("AnimationLibrary_k2bse")

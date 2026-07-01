@@ -3,12 +3,12 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $MrBlobSprites
 @onready var animations: AnimationPlayer = $BlobAnimations
 
-var blob_speed: float = 4.0
+var blob_speed: float = 5.0
 var going_right: bool = true
 var direction: int = 1
 var can_move: bool = true
-var hit_restart: bool = false
 var wait_time: float = 0.0
+var hit_restart: bool = false
 
 func _physics_process(delta: float) -> void:
 	#Only allowing movement when we're not dead/beat the level
@@ -45,12 +45,3 @@ func _physics_process(delta: float) -> void:
 			sprite.frame = 0
 
 		move_and_slide()
-
-func hurt_blob():
-	print(animations)
-	can_move = false
-	self.set_velocity(Vector2(0,0))
-	if hit_restart:
-		animations.play("blob_stuck")
-	else:
-		animations.play("blob_hurt")

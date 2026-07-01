@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://6kqf807tmk1x"]
+
+[ext_resource type="AudioStream" uid="uid://c4evay14n8fi8" path="res://Assets/Audio/MrBlob Song.wav" id="1_y2wdd"]
+[ext_resource type="Script" uid="uid://dbi0jy5dg8gni" path="res://Scripts/audio.gd" id="2_yb8jo"]
+
+[node name="Audio" type="AudioStreamPlayer2D" unique_id=1378740141 node_paths=PackedStringArray("exit_star", "mr_blob", "ui")]
+stream = ExtResource("1_y2wdd")
+autoplay = true
+script = ExtResource("2_yb8jo")
+exit_star = NodePath("")
+mr_blob = NodePath("")
+ui = NodePath("")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bm65lxuti74co"]
 
-[ext_resource type="Script" uid="uid://bv42regphj53q" path="res://Levels/mr_blob.gd" id="1_5osjr"]
+[ext_resource type="Script" uid="uid://bv42regphj53q" path="res://Scripts/mr_blob.gd" id="1_5osjr"]
 [ext_resource type="Texture2D" uid="uid://c4ha6y6ojvynj" path="res://Assets/Images/Mr Blob Spritesheet.png" id="2_uuw1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
@@ -68,8 +68,9 @@ texture = ExtResource("2_uuw1b")
 hframes = 4
 vframes = 2
 
-[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=91076637]
+[node name="BlobBox" type="CollisionShape2D" parent="." unique_id=91076637]
 shape = SubResource("RectangleShape2D_bihxj")
+debug_color = Color(0.8167591, 0.0019281178, 0.97432226, 0.41960785)
 
 [node name="WallTimer" type="Timer" parent="." unique_id=853123588]
 wait_time = 0.1

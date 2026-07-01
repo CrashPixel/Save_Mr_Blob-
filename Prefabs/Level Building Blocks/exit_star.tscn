@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://n3r415sx58xn"]
+
+[ext_resource type="Texture2D" uid="uid://5pjcrmtqpqvt" path="res://Assets/Images/Overlay.png" id="1_c631i"]
+[ext_resource type="Script" uid="uid://b7ttuk7m4t1e3" path="res://Scripts/exit_star.gd" id="2_jo40a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bihxj"]
+size = Vector2(4, 4)
+
+[node name="ExitStar" type="Sprite2D" unique_id=146670636]
+z_index = 1
+texture = ExtResource("1_c631i")
+region_enabled = true
+region_rect = Rect2(52, 21, 6, 6)
+script = ExtResource("2_jo40a")
+levels = ["res://Levels/level_1.tscn"]
+
+[node name="WinArea" type="Area2D" parent="." unique_id=673990507]
+
+[node name="WinBox" type="CollisionShape2D" parent="WinArea" unique_id=1803912288]
+shape = SubResource("RectangleShape2D_bihxj")
+debug_color = Color(0.82339525, 0.6570957, 0, 0.41960785)
+
+[node name="Win" type="Sprite2D" parent="." unique_id=2129563245]
+visible = false
+z_index = 5
+position = Vector2(13, -2)
+texture = ExtResource("1_c631i")
+region_enabled = true
+region_rect = Rect2(66, 17, 28, 14)
+
+[connection signal="body_entered" from="WinArea" to="." method="win"]
